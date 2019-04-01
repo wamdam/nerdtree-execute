@@ -39,6 +39,9 @@ function! NERDTreeExecute()
   elseif has("unix") && executable("open") && s:hasdarwin
     exe "silent !open ".args
     let ret= v:shell_error
+  elseif has("unix") && executable("gio")
+    exe "silent !gio open ".args
+    let ret= v:shell_error
   elseif has("win32") || has("win64")
     exe "silent !start explorer ".shellescape(path,1)
   end
